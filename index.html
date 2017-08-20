@@ -6,9 +6,10 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <div class="modal-bg"></div>
         <div id="header">
             <div class="left">
-                <div class="title">Hologram</div>
+                <div class="title">::: Hologram;</div>
             </div>
             <div class="right">
                 <div class="title-chat">
@@ -19,12 +20,12 @@
             <div class="clearfix"></div>
         </div>
         <div id="container">
-            <div id="user-container" class="left">
+            <div ng-controller="UserController" id="user-container" class="left">
                 <div id="search-box">
                     <input type="text" class="input-box" placeholder="Search">    
                 </div>   
                 <div id="user-box">
-                    <div class="user">
+                    <div class="user" ng-repeat="user in users">
                         <div class="photo">AT</div>
                         <div class="text">
                             <div class="text1">hai</div>
@@ -85,5 +86,13 @@
         <div id="footer">
             Made with finger. Powered by <a href="http://www.mahirkoding.com">www.mahirkoding.com</a>
         </div>
+        <div id="register" class="modal" ng-controller="RegisterController">
+            <label>Full Name </label>
+            <input type="text" class="input-box" placeholder="Insert your full name" ng-model="fullname">
+            <label>Email </label>
+            <input type="text" class="input-box" placeholder="Insert your mail address" ng-model="email">
+            <button ng-click="register()">Register</button>
+        </div>
     </body>
+    <script data-main="js/main.js" src="js/require.js"></script>
 </html>

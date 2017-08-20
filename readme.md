@@ -3,7 +3,7 @@
 
 # Tech
 - Socket.io for realtime chats
-- Lumen micro frameworks for backend
+- Laravel frameworks 5.4 for backend
 - AngularJS for frontend
 
 # Support
