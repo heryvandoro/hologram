@@ -14,3 +14,18 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
+/**
+ * Routes for resource user
+ */
+$app->get('user', 'UsersController@all');
+$app->get('user/{id}', 'UsersController@get');
+$app->post('user', 'UsersController@add');
+$app->put('user/{id}', 'UsersController@put');
+$app->delete('user/{id}', 'UsersController@remove');
+
+/**
+ * Routes for resource chat
+ */
+$app->get('chat', 'ChatsController@get');
+$app->post('chat', 'ChatsController@add');
