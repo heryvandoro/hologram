@@ -15,6 +15,10 @@ class Chat extends Model
         "messages" => "required",
 	];
 
+    protected $fillable = [
+        "sender_id", "recv_id", "messages"
+    ];
+
     public function sender(){
         return $this->belongsTo("App\Model\User", "sender_id", "user_id");
     }
