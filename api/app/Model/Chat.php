@@ -10,24 +10,24 @@ class Chat extends Model
     protected $with = ["sender", "recv"];
 
     public static $rules = [
-		"sender_id" => "required",
-		"recv_id" => "required",
+		"sender" => "required",
+		"recv" => "required",
         "messages" => "required",
 	];
 
     protected $fillable = [
-        "sender_id", "recv_id", "messages"
+        "sender", "recv", "messages"
     ];
 
     public function sender(){
-        return $this->belongsTo("App\Model\User", "sender_id", "user_id");
+        return $this->belongsTo("App\Model\User", "sender", "email");
     }
 
     public function recv(){
-        return $this->belongsTo("App\Model\User", "recv_id", "user_id");
+        return $this->belongsTo("App\Model\User", "recv", "email");
     }
 
     public function scopeChat($query, $param1, $param2){
-        return $query->where("sender_id", $param1)->where("recv_id", $param2)->orWhere("sender_id", $param2)->where("recv_id", $param1);
+        return $query->where("sender", $param1)->where("recv", $param2)->orWhere("sender", $param2)->where("recv", $param1);
     }
 }

@@ -6,6 +6,7 @@
     
     "UserController" : "controllers/UserController",
     "RegisterController" : "controllers/RegisterController",
+    "ChatController" : "controllers/ChatController",
 
     "UserFactory" : "factories/UserFactory",
   };
@@ -17,13 +18,16 @@
         angular: {
             exports: 'angular'
         },
+        socketio: {
+            exports: 'socketio'
+        },
     },
   });
     
-  var req = ["app", "socketio", "RegisterController", "UserController"];
+  var req = ["app", "socketio", "RegisterController", 
+            "UserController", "ChatController"];
   require(req, (app, socketio) => { 
     angular.bootstrap(document, ['hologram']); 
     window.io = socketio;
-    window.conn = io.connect("http://localhost:5000");
   });
 })();

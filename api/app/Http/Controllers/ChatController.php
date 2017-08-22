@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 class ChatController extends Controller {
 
     public function get(Request $request){
-        if($request->has("id1") && $request->has("id2")){
-            return Chat::chat($request->id1, $request->id2)->get();
+        if($request->has("em1") && $request->has("em2")){
+            return Chat::chat($request->em1, $request->em2)->get();
         }else{
             return response()->json(["status"=>"not found"]);
         }

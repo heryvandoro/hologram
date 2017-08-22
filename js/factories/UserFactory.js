@@ -8,6 +8,15 @@ define(["app"], (app)=>{
                 data : data
             })
         }
+        obj.getOnline = ()=>{
+            return $http({
+                url : base_api+"/user",
+                method : "GET",
+                params : {
+                    online : "true"
+                }
+            })
+        }
         return obj;
     })
 })

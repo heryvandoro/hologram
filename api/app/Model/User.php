@@ -16,4 +16,10 @@ class User extends Model
 		"initial" => "required",
         "email" => "required|email",
     ];
+
+    protected $hidden = ["updated_at", "created_at", "deleted_at"];
+
+    public function scopeOnline($query){
+        return $query->where("online", 1);
+    }
 }

@@ -6,7 +6,9 @@ use Validator;
 
 class UserController extends Controller {
     
-    public function index(){
+    public function index(Request $request){
+        if($request->has("online") && $request->online=="true") 
+            return User::online()->get();
         return User::all();
     }
 

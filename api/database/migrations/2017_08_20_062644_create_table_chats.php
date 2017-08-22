@@ -13,8 +13,8 @@ class CreateTableChats extends Migration
     public function up()
     {
         Schema::create("chats", function(Blueprint $table){
-            $table->string("sender_id");
-            $table->string("recv_id");
+            $table->string("sender");
+            $table->string("recv");
             $table->text("messages");
             $table->timestamps();
             $table->softDeletes();

@@ -1,10 +1,10 @@
 define(["app", "jquery", "UserFactory"], (app)=>{
     return app.controller("RegisterController", function($scope, $rootScope,  UserFactory){
-        $scope.me = {};
+        //$scope.me = {};
         
         $scope.register = ()=>{
             var data = {
-                user_id : conn.id,
+                user_id : app.conn.id,
                 fullname : $scope.fullname,
                 initial : $scope.getInitial($scope.fullname),
                 email : $scope.email
@@ -15,6 +15,7 @@ define(["app", "jquery", "UserFactory"], (app)=>{
                }else{
                     localStorage.setItem("user", response.data);
                     $rootScope.me = response.data;
+                    app.conn.emit("new_user", response.data);
                     $("#register").hide();
                     $(".modal-bg").hide();
                }

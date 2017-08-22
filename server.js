@@ -19,8 +19,8 @@ server.listen(5000, function(){
 });
 
 io.on("connection", (socket)=>{
-    socket.on("register", (data)=>{
-        
+    socket.on("new_user", (data)=>{
+        socket.broadcast.emit('new_user', data);
     })
     socket.on("disconnect", ()=>{
        makeRequest("POST", "/user/makeoffline", {target:socket.id});
