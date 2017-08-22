@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Model\User;
-use Illuminate\Contracts\Validation\Validator;
+use Validator;
 
 class UserController extends Controller {
     
@@ -10,18 +10,38 @@ class UserController extends Controller {
         return User::all();
     }
 
-    public function show($id){
-        return User::find($id);
+    public function show($email){
+        return User::find($email);
     }
 
     public function store(Request $request){
-        //$this->validate($request, User::$rules);
         $a = Validator::make($request->all(), User::$rules);
         if($a->fails()){
             return response()->json(["errors"=>$a->errors()]);
         }
-        $data = User::create($request->all());
-        return response()->json(['created'=> $data]);
+        
+        if(User::find($request->email)){
+            $data = User::find($request->email);
+            if($data->online){
+                return response()->json(["errors"=>array("online" => ["User already logged."])]);
+            }else{
+                $data->user_id = $request->user_id;
+                $data->fullname = $request->fullname;
+                $data->initial = $request->initial;
+                $data->online = 1;
+                $data->save();
+            }
+        }else{
+            $data = new User;
+            $data->user_id = $request->user_id;
+            $data->fullname = $request->fullname;
+            $data->initial = $request->initial;
+            $data->email = $request->email;
+            $data->online = 1;
+            $data->save();
+        }
+
+        return $this->show($data->email);
     }
 
     // public function put(Request $request, $id){
@@ -41,5 +61,13 @@ class UserController extends Controller {
 		}
         $data->delete();
         return response()->json(["status"=>"success"]);
+    }
+
+    public function makeOffline(Request $request){
+        $data = User::where("user_id", $request->target)->first();
+        if($data!=null){
+            $data->online = 0;
+            $data->save();
+        }
     }
 }

@@ -13,8 +13,8 @@
             </div>
             <div class="right">
                 <div class="title-chat">
-                    <span class="name">Hery Vandoro</span>
-                    <span class="username">@heryvandoro</span>
+                    <span class="name" ng-cloak>{{ me.fullname }}</span>
+                    <span class="username">{{ me.email }}</span>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -87,11 +87,12 @@
             Made with finger. Powered by <a href="http://www.mahirkoding.com">www.mahirkoding.com</a>
         </div>
         <div id="register" class="modal" ng-controller="RegisterController">
-            <label>Full Name </label>
+            <label>Full Name <span ng-cloak class="error-text">{{ errors.fullname[0] }}</span></label>
             <input type="text" class="input-box" placeholder="Insert your full name" ng-model="fullname">
-            <label>Email </label>
+            <label>Email <span ng-cloak class="error-text">{{ errors.email[0] }}</span></label>
             <input type="text" class="input-box" placeholder="Insert your mail address" ng-model="email">
-            <button ng-click="register()">Register</button>
+            <p ng-cloak class="error-text">{{ errors.online[0] }}</p>
+            <button ng-click="register()">Register/Login</button>
         </div>
     </body>
     <script data-main="js/main.js" src="js/require.js"></script>

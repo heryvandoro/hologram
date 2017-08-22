@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
+Route::post("user/makeoffline", "UserController@makeOffline");
 Route::apiResource("user", "UserController");
 Route::get("chat", "ChatController@get");
 Route::post("chat", "ChatController@add");

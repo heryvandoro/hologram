@@ -185,3 +185,10 @@ a:hover{
     margin: 10px 0;
     display: block;
 }
+.error-text{
+    color: red;
+    font-size: 12px;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}

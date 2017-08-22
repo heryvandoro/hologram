@@ -13,10 +13,11 @@ class CreateTableUsers extends Migration
     public function up()
     {
         Schema::create("users", function(Blueprint $table){
-            $table->string("user_id")->primary();
+            $table->string("user_id");
             $table->string("fullname");
             $table->string("initial");
-            $table->string("email");
+            $table->string("email")->primary();
+            $table->boolean("online");
             $table->timestamps();
             $table->softDeletes();
         });

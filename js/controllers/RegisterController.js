@@ -1,7 +1,7 @@
 define(["app", "jquery", "UserFactory"], (app)=>{
-    return app.controller("RegisterController", function($scope, UserFactory){
-        $scope.users = {};
-
+    return app.controller("RegisterController", function($scope, $rootScope,  UserFactory){
+        $scope.me = {};
+        
         $scope.register = ()=>{
             var data = {
                 user_id : conn.id,
@@ -10,11 +10,20 @@ define(["app", "jquery", "UserFactory"], (app)=>{
                 email : $scope.email
             }
             UserFactory.register(data).then((response)=>{
-               // console.log(response)
+               if(response.data.errors) {
+                    $scope.errors = response.data.errors;
+               }else{
+                    localStorage.setItem("user", response.data);
+                    $rootScope.me = response.data;
+                    $("#register").hide();
+                    $(".modal-bg").hide();
+               }
             })
         }
         
         $scope.getInitial = (name)=>{
+            if(name==null || name=="") return "XX";
+            
             var initial;
             name = name.trim();
             if(name.indexOf(" ")!=-1)
