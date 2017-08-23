@@ -9,6 +9,7 @@
     "ChatController" : "controllers/ChatController",
 
     "UserFactory" : "factories/UserFactory",
+    "ChatFactory" : "factories/ChatFactory",
   };
 
   require.config({

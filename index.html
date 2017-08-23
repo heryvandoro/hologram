@@ -13,8 +13,8 @@
             </div>
             <div class="right">
                 <div class="title-chat">
-                    <span class="name" ng-cloak></span>
-                    <span class="username"></span>
+                    <span class="name" ng-cloak>{{ target.fullname }}</span> - 
+                    <span class="username">{{ target.email }}</span>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -25,7 +25,7 @@
                     <input type="text" class="input-box" placeholder="Search" ng-model="search">    
                 </div>   
                 <div id="user-box">
-                    <div ng-cloak class="user" ng-repeat="user in users | filter:{fullname:search}">
+                    <div ng-click="openChat(this)" ng-cloak class="user" ng-repeat="user in users | filter:{fullname:search}">
                         <div class="photo" ng-style="{'background-color':user.color}">{{ user.initial }}</div>
                         <div class="text">
                             <div class="text1">{{ user.fullname }}</div>
@@ -34,41 +34,12 @@
                     </div>
                 </div>
             </div>
-            <div id="chat-container" class="right">
+            <div id="chat-container" class="right" ng-controller="ChatController">
                 <div id="chat-content">
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
-                    <p>haha</p>
+                    <div class="chat" ng-class="(chat.sender==me.email) ? 'me' : 'target'" ng-repeat="chat in chats">
+                        <p class="name">{{ chat.sender==me.email? me.fullname : target.fullname }}</p>
+                        <p class="content"> hai wkwk</p>
+                    </div>
                 </div>
                 <div id="chat-input">
                     <input type="text" class="input-box" placeholder="Write a messages | type [enter] to send">    

@@ -192,3 +192,31 @@ a:hover{
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
+
+.chat{
+    margin-bottom: 10px;
+    display: block;
+    max-width: 97%;
+}
+.chat .name{
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+    text-transform: capitalize;
+}
+.chat .content{
+    font-size: 15px;
+    word-wrap: break-word;
+    border: 1px solid #fefefe;
+    background-color: #86CFF4;
+    padding: 5px 12px;
+    display: inline-block;
+    color: #fff;
+}
+.chat.me{
+    text-align: left;
+}
+.chat.target{
+    text-align: right;
+}

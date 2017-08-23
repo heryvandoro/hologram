@@ -24,5 +24,6 @@ io.on("connection", (socket)=>{
     })
     socket.on("disconnect", ()=>{
        makeRequest("POST", "/user/makeoffline", {target:socket.id});
+       socket.broadcast.emit('del_user', socket.id);
     })
 });
