@@ -50,6 +50,10 @@ define(["app", "jquery", "UserFactory"], (app)=>{
                     return x.user_id==data
                 });
                 if(temp!=null)
+                    if($rootScope.target.user_id==temp.user_id) {
+                        $rootScope.target="";
+                        
+                    }
                     $scope.users.splice($scope.users.indexOf(temp), 1);
             })
         })

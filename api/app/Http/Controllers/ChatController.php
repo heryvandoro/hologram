@@ -2,6 +2,7 @@
 
 use App\Model\Chat;
 use Illuminate\Http\Request;
+use Validator;
 
 class ChatController extends Controller {
 
@@ -14,7 +15,10 @@ class ChatController extends Controller {
     }
 
     public function add(Request $request){
-        $this->validate($request, Chat::$rules);
+        $valid = Validator::make($request->all(), Chat::$rules);
+        if($valid->fails()){
+            return response()->json(["errros"=>$valid->errors()]);
+        }
         $data = Chat::create($request->all());
         return response()->json(['created'=> $data]);
     }

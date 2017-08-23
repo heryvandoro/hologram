@@ -38,11 +38,11 @@
                 <div id="chat-content">
                     <div class="chat" ng-class="(chat.sender==me.email) ? 'me' : 'target'" ng-repeat="chat in chats">
                         <p class="name">{{ chat.sender==me.email? me.fullname : target.fullname }}</p>
-                        <p class="content"> hai wkwk</p>
+                        <p class="content"> {{ chat.messages }}</p>
                     </div>
                 </div>
                 <div id="chat-input">
-                    <input type="text" class="input-box" placeholder="Write a messages | type [enter] to send">    
+                    <input ng-disabled="noPartner()" ng-model="messages" ng-keydown="sendMessages($event)" type="text" class="input-box" placeholder="Write a messages | type [enter] to send">    
                 </div>
             </div>
             <div class="clearfix"></div>

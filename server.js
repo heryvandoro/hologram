@@ -26,4 +26,8 @@ io.on("connection", (socket)=>{
        makeRequest("POST", "/user/makeoffline", {target:socket.id});
        socket.broadcast.emit('del_user', socket.id);
     })
+    socket.on("messages", (data)=>{
+        io.sockets.connected[data.detail.s_id].emit("messages", data);
+        io.sockets.connected[data.detail.r_id].emit("messages", data);
+    })
 });

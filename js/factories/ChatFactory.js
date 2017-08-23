@@ -11,6 +11,13 @@ define(["app"], (app)=>{
                 }
             })
         }
+        obj.sendChat = (data)=>{
+            return $http({
+                method : "POST",
+                url : base_api+"/chat",
+                data : data
+            })
+        }
         return obj;
     })
 })

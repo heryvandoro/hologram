@@ -23,7 +23,7 @@ define(["app", "jquery", "UserFactory"], (app)=>{
         }
         
         $scope.getInitial = (name)=>{
-            if(name==null || name=="") return "XX";
+            if(name==null || name=="" || name.length==1) return "XX";
             
             var initial;
             name = name.trim();
