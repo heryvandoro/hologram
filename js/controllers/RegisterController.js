@@ -1,6 +1,5 @@
 define(["app", "jquery", "UserFactory"], (app)=>{
     return app.controller("RegisterController", function($scope, $rootScope,  UserFactory){
-        //$scope.me = {};
         
         $scope.register = ()=>{
             var data = {

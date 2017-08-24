@@ -43,7 +43,6 @@ a:hover{
     background-color: #fff;
     max-width: 70%;
     margin: 0 auto;
-    height: 85vh;
     overflow: hidden;
     border: 1px solid;
     border-top: none;
@@ -192,7 +191,6 @@ a:hover{
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
-
 .chat{
     margin-bottom: 10px;
     display: block;

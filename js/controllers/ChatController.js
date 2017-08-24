@@ -2,6 +2,7 @@ define(["app", "socketio", "ChatFactory"], (app)=>{
     return app.controller("ChatController", (ChatFactory, $scope, $rootScope)=>{
 
         $scope.chats = [];
+        $scope.music = new Audio("assets/audio/chat.mp3");
 
         $scope.loadChat = ()=>{
             ChatFactory.getChat($rootScope.target.email, $rootScope.me.email).then((response)=>{
@@ -44,6 +45,7 @@ define(["app", "socketio", "ChatFactory"], (app)=>{
                 if($rootScope.target!=null){
                     if($rootScope.me.email==data.recv && $rootScope.target.email==data.sender
                         || $rootScope.target.email==data.recv && $rootScope.me.email==data.sender){
+                        if(data.recv==$rootScope.me.email) $scope.music.play();
                         $scope.chats.push(data);
                     }
                 }

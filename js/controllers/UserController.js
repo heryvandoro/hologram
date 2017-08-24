@@ -39,6 +39,7 @@ define(["app", "jquery", "UserFactory"], (app)=>{
         app.conn.on("new_user", (data)=>{
             if($rootScope.me!=null){
                 $scope.$apply(()=>{
+                    data.color = $scope.randColor();
                     $scope.users.push(data);
                 })
             }
@@ -52,7 +53,6 @@ define(["app", "jquery", "UserFactory"], (app)=>{
                 if(temp!=null)
                     if($rootScope.target.user_id==temp.user_id) {
                         $rootScope.target="";
-                        
                     }
                     $scope.users.splice($scope.users.indexOf(temp), 1);
             })
