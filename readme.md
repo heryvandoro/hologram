@@ -1,5 +1,5 @@
-# Hologram - Simple Chat Apps with Socket.io
--
+# Hologram - Simple Chat Apps
+Simple realtime chat with Socket.IO, Laravel and AngularJS
 
 # Tech
 - Socket.io for realtime chats
